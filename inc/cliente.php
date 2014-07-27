@@ -24,7 +24,7 @@ $dadosCliente = arrayDeClientes();
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table tablesorter" id="tblListaClientes">
                             <thead>
                             <tr>
                                 <th>id</th>

@@ -45,5 +45,6 @@ require_once( 'config.php' );
 <script src="<?php echo $base_url ?>/publico/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo $base_url ?>/publico/bootstrap/js/bootstrap-dialog.min.js"></script>
 <script src="<?php echo $base_url ?>/publico/js/clientes.js"></script>
+<script src="<?php echo $base_url ?>/publico/js/jquery.tablesorter.min.js"></script>
 </body>
 </html>
