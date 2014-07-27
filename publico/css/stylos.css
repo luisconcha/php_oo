@@ -1,0 +1,12 @@
+#containerPrincipal{margin-top: 60px;}
+.page-header{margin-top: 5%;}
+.footer .container p{text-align: center;}
+
+.paginaErro{margin-top: 5%;}
+.paginaErro #imgErro img{background: #ccc; margin-left: 25%}
+.paginaErro h2, h3{text-align: center;}
+.paginaErro h3{padding-bottom: 10%;}
+
+.row #listaClientes{ padding-top: 3%;}
+.row #listaClientes .clickable{ cursor: pointer;}
+.row #listaClientes .panel-heading span {margin-top: -15px;}
