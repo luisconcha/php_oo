@@ -1,4 +1,4 @@
-#Lista de Cliente com PHP-OO
+#Lista de Clientes com PHP-OO
 
 ##Modelo de implantação:
         a) clonar a aplicação na maquina:
