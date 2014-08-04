@@ -3,17 +3,17 @@
  * File: cliente.php
  * Author: Luis Alberto Concha Curay
  * E-mail: luvett11@gmail.com
- * Language: 
+ * Language:
  * Date: 26/06/14
  * Time: 16:47
  * Project: estudo_php
  * Copyright: 2014
  */
 
-$dadosCliente = arrayDeClientes();
+$dados = arrayMixDeClientes();
+
 
 ?>
-
 <div class="row">
     <div id="listaClientes">
         <div class="col-md-10">
@@ -29,21 +29,21 @@ $dadosCliente = arrayDeClientes();
                             <tr>
                                 <th>id</th>
                                 <th>Nome</th>
-                                <th>Email</th>
+                                <th>Tipo de pessoa</th>
                                 <th>Telefone</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach( $dadosCliente as $cli ) : ?>
-                            <tr>
-                                <td><?php echo $cli->getid(); ?></td>
-                                <td><?php echo $cli->getNome(); ?></td>
-                                <td><?php echo $cli->getEmail(); ?></td>
-                                <td><?php echo mascara( $cli->getTelCelular(), '(##) ####-####' ); ?></td>
-                                <td class="text-center">
-                                    <a class='btn btn-info btn-xs' href="#" id="btnDetalheCliente" data-id="<?php echo $cli->getid(); ?>"><span class="glyphicon glyphicon-zoom-in"></span>Detalhes</a>
-                                </td>
-                            </tr>
+                            <?php foreach( $dados as $cli ) : ?>
+                                <tr>
+                                    <td><?php echo $cli->getId(); ?></td>
+                                    <td><?php echo $cli->getNome(); ?></td>
+                                    <td><?php echo ($cli->getTipoPessoa() == 'pf') ? 'Pessoa Física' :  'Pessoa Juridica' ;?></td>
+                                    <td><?php echo mascara( $cli->getTelCelular(), '(##) ####-####' ); ?></td>
+                                    <td class="text-center">
+                                        <a class='btn btn-info btn-xs' href="#" id="btnDetalheCliente" data-id="<?php echo $cli->getid(); ?>" data-tipoPessoa = "<?php echo $cli->getTipoPessoa(); ?>"><span class="glyphicon glyphicon-zoom-in"></span>Detalhes</a>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                             </tbody>
                         </table>

@@ -33,10 +33,11 @@ $(document).ready(function(){
 
     tbody.on('click', '#btnDetalheCliente', function( e ){
         e.preventDefault();
-        var idCliente = $(this).attr( 'data-id' );
+        var idCliente  = $(this).attr( 'data-id' );
+        var tipoPessoa = $(this).attr( 'data-tipoPessoa' );
         BootstrapDialog.show( {
             title: 'Detalhe do cliente',
-            message: $('<div></div>').load('inc/detalheCliente.php?idCliente='+idCliente),
+            message: $('<div></div>').load('inc/detalheCliente.php?idCliente='+idCliente+'&tipoPessoa='+tipoPessoa),
             closable: false,
             buttons: [{
                 id: 'btn-ok',
