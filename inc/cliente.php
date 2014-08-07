@@ -15,7 +15,7 @@ $dados = arrayMixDeClientes();
 ?>
 <div class="row">
     <div id="listaClientes">
-        <div class="col-md-10">
+        <div class="col-md-11">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Lista de Clientes cadastrados</h3>
@@ -23,7 +23,7 @@ $dados = arrayMixDeClientes();
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table tablesorter" id="tblListaClientes">
+                        <table class="table tablesorter table-hover" id="tblListaClientes">
                             <thead>
                             <tr>
                                 <th>id</th>
