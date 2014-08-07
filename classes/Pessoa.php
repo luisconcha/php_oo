@@ -13,7 +13,7 @@
 namespace classes;
 
 
-class Pessoa
+class Pessoa implements iPessoa
 {
     private $id;
     private $nome;
@@ -41,6 +41,51 @@ class Pessoa
             ->setBairro( $bairro )
             ->setCep( $cep )
             ->setTipoPessoa( $tipoPessoa );
+    }
+
+    public function enderecoCobranca( $tipo )
+    {
+        $arrTipo = array();
+        $html = '';
+        switch( $tipo ) {
+            case '1' :
+                $html .= '<ul>';
+                $html .= '<li>Casa</li>';
+                $html .= '</ul>';
+                return $html;
+                break;
+            case '2' :
+                $html .= '<ul>';
+                $html .= '<li>Casa</li>';
+                $html .= '<li>Comercial</li>';
+                $html .= '</ul>';
+                return $html;
+                break;
+            case '3' :
+                $html .= '<ul>';
+                $html .= '<li>Casa</li>';
+                $html .= '<li>Comercial</li>';
+                $html .= '<li>Escritório</li>';
+                $html .= '</ul>';
+                return $html;
+                break;
+        }
+    }
+
+
+    /**
+     * @param $num
+     * @return string
+     */
+    public function classifica( $num )
+    {
+        $this->classificacao = $num;
+        $caracter = '*';
+        for( $i=1; $i < $this->classificacao; $i++ )
+        {
+            $caracter .= '*';
+        }
+        return $caracter;
     }
 
     /**

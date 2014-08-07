@@ -32,6 +32,7 @@ $detalheCliente = arrayMixDeClientes( $idCliente-1 );
             <?php if( $tipoPessoa == 'pf' ) {  ?>
                 <i class="glyphicon glyphicon-th"></i> CPF: <?php echo mascara( $detalheCliente->getCpf(), '###.###.###-##' );?><br />
                 <i class="glyphicon glyphicon-th"></i> RG : <?php echo $detalheCliente->getRg() ;?><br />
+                <i class="glyphicon glyphicon-star"></i> Endereço de cobrança:&nbsp;<?php echo $detalheCliente->getTipoCobranca();?><br />
             <?php }elseif( $tipoPessoa == 'pj' ) { ?>
                 <i class="glyphicon glyphicon-th"></i> CPF: <?php echo mascara( $detalheCliente->getCnpj(), '##.###.###/####-##' );?><br />
                 <i class="glyphicon glyphicon-th"></i> Nome  fantasia: <?php echo  $detalheCliente->getNomeFantasia() ;?><br />
@@ -43,6 +44,7 @@ $detalheCliente = arrayMixDeClientes( $idCliente-1 );
             <i class="glyphicon glyphicon-inbox"></i> Endereço:<?php echo $detalheCliente->getEndereco();?><br />
             <i class="glyphicon glyphicon-bookmark"></i> Bairro:<?php echo $detalheCliente->getBairro();?><br />
             <i class="glyphicon glyphicon-move"></i> CEP:<?php echo mascara( $detalheCliente->getCep(), '##.###-###' );?><br />
+            <i class="glyphicon glyphicon-star"></i> Categoria cliente:&nbsp;<?php echo $detalheCliente->getEstrelas();?><br />
         </p>
     </div>
 </div>

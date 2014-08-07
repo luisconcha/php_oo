@@ -17,13 +17,28 @@ class PessoaJuridica extends Pessoa
 {
     private $cnpj;
     private $nomeFantasia;
+    private $estrelas;
 
-    public function __construct( $id, $nome, $email, $telFixo, $telCelular, $uf, $estado, $endereco, $bairro ,$cep, $tipoPessoa, $cnpj, $nomeFantasia )
+    public function __construct( $id, $nome, $email, $telFixo, $telCelular, $uf, $estado, $endereco, $bairro ,$cep, $tipoPessoa, $cnpj, $nomeFantasia, $numEstrelas )
     {
         parent::__construct($id, $nome, $email, $telFixo, $telCelular, $uf, $estado, $endereco, $bairro ,$cep, $tipoPessoa);
         $this->setCnpj( $cnpj )
              ->setNomeFantasia( $nomeFantasia );
+        $this->estrelas = parent::classifica( $numEstrelas );
+    }
 
+    /**
+     * @return string
+     */
+    public function getTipoCobranca(){}
+
+
+    /**
+     * @return string
+     */
+    public function getEstrelas()
+    {
+        return $this->estrelas;
     }
 
     /**

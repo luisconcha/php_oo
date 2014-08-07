@@ -12,7 +12,6 @@
 
 $dados = arrayMixDeClientes();
 
-
 ?>
 <div class="row">
     <div id="listaClientes">
@@ -30,7 +29,9 @@ $dados = arrayMixDeClientes();
                                 <th>id</th>
                                 <th>Nome</th>
                                 <th>Tipo de pessoa</th>
+                                <th>Clasificação</th>
                                 <th>Telefone</th>
+                                <th>Endereço de cobrança</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -39,7 +40,9 @@ $dados = arrayMixDeClientes();
                                     <td><?php echo $cli->getId(); ?></td>
                                     <td><?php echo $cli->getNome(); ?></td>
                                     <td><?php echo ($cli->getTipoPessoa() == 'pf') ? 'Pessoa Física' :  'Pessoa Juridica' ;?></td>
+                                    <td><?php echo $cli->getEstrelas(); ?></td>
                                     <td><?php echo mascara( $cli->getTelCelular(), '(##) ####-####' ); ?></td>
+                                    <td><?php echo $cli->getTipoCobranca(); ?></td>
                                     <td class="text-center">
                                         <a class='btn btn-info btn-xs' href="#" id="btnDetalheCliente" data-id="<?php echo $cli->getid(); ?>" data-tipoPessoa = "<?php echo $cli->getTipoPessoa(); ?>"><span class="glyphicon glyphicon-zoom-in"></span>Detalhes</a>
                                     </td>

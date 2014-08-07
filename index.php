@@ -21,13 +21,13 @@ require_once( 'config.php' );
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Site simple em php">
     <meta name="author" content="Luis Alberto Concha Curay">
-    <link rel="icon" href="<?php echo $base_url ?>/publico/imagens/favicon.ico">
+    <link rel="icon" href="publico/imagens/favicon.ico">
 
     <title>Lista de Clientes</title>
 
-    <link href="<?php echo $base_url ?>/publico/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo $base_url ?>/publico/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="<?php echo $base_url ?>/publico/css/stylos.css" rel="stylesheet">
+    <link href="publico/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="publico/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="publico/css/stylos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -40,11 +40,11 @@ require_once( 'config.php' );
 
 <?php require_once( 'inc/footer.php' ); ?>
 
-<script src="<?php echo $base_url ?>/publico/js/jquery.min.js"></script>
-<script src="<?php echo $base_url ?>/publico/js/maskedInput.jquery.js"></script>
-<script src="<?php echo $base_url ?>/publico/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?php echo $base_url ?>/publico/bootstrap/js/bootstrap-dialog.min.js"></script>
-<script src="<?php echo $base_url ?>/publico/js/clientes.js"></script>
-<script src="<?php echo $base_url ?>/publico/js/jquery.tablesorter.min.js"></script>
+<script src="publico/js/jquery.min.js"></script>
+<script src="publico/js/maskedInput.jquery.js"></script>
+<script src="publico/bootstrap/js/bootstrap.min.js"></script>
+<script src="publico/bootstrap/js/bootstrap-dialog.min.js"></script>
+<script src="publico/js/clientes.js"></script>
+<script src="publico/js/jquery.tablesorter.min.js"></script>
 </body>
 </html>

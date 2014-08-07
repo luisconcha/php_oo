@@ -19,14 +19,35 @@ class PessoaFisica extends Pessoa
     private $rg;
     private $foto;
     private $msg;
+    private $estrelas;
+    private $tipoCobranca;
 
-    public function __construct( $id, $nome, $email, $telFixo, $telCelular, $uf, $estado, $endereco, $bairro ,$cep, $tipoPessoa, $cpf, $rg, $foto)
+
+    public function __construct( $id, $nome, $email, $telFixo, $telCelular, $uf, $estado, $endereco, $bairro ,$cep, $tipoPessoa, $cpf, $rg, $foto, $numEstrelas, $tipoCobranca)
     {
         parent::__construct($id, $nome, $email, $telFixo, $telCelular, $uf, $estado, $endereco, $bairro ,$cep, $tipoPessoa);
         $this->setCpf( $cpf )
              ->setRg( $rg )
              ->setFoto( $foto );
+        $this->estrelas     = parent::classifica( $numEstrelas );
+        $this->tipoCobranca = parent::enderecoCobranca( $tipoCobranca );
+    }
 
+
+    /**
+     * @return string
+     */
+    public function getTipoCobranca()
+    {
+        return $this->tipoCobranca;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEstrelas()
+    {
+        return $this->estrelas;
     }
 
     /**
