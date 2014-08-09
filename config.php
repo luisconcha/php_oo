@@ -37,5 +37,5 @@ if( isset( $_SERVER['SERVER_NAME'] ) )  {
     }
 }
 
-require_once( 'autoload.php' );
-require_once( 'funcoes/funcoes.php' );
+require_once('autoload.php');
+require_once('app/funcoes/funcoes.php');

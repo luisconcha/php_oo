@@ -9,7 +9,8 @@
  * Project: estudo_php
  * Copyright: 2014
  */
-require_once('../config.php');
+
+require_once('../../config.php');
 
 $idCliente      = filter_input( INPUT_GET, 'idCliente', FILTER_SANITIZE_NUMBER_INT );
 $tipoPessoa     = filter_input( INPUT_GET, 'tipoPessoa', FILTER_SANITIZE_STRING);

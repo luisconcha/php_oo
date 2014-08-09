@@ -37,7 +37,7 @@ $(document).ready(function(){
         var tipoPessoa = $(this).attr( 'data-tipoPessoa' );
         BootstrapDialog.show( {
             title: 'Detalhe do cliente',
-            message: $('<div></div>').load('inc/detalheCliente.php?idCliente='+idCliente+'&tipoPessoa='+tipoPessoa),
+            message: $('<div></div>').load('app/inc/detalheCliente.php?idCliente='+idCliente+'&tipoPessoa='+tipoPessoa),
             closable: false,
             buttons: [{
                 id: 'btn-ok',

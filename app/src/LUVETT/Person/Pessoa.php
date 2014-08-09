@@ -1,23 +1,23 @@
 <?php
 /**
- * File: Cliente.php
+ * File: Pessoa.php
  * Author: Luis Alberto Concha Curay
  * E-mail: luvett11@gmail.com
  * Language: 
- * Date: 26/07/14
- * Time: 21:58
+ * Date: 02/08/14
+ * Time: 23:00
  * Project: estudo_php
  * Copyright: 2014
  */
 
-namespace classes;
+namespace app\src\LUVETT\Person;
 
+use app\src\LUVETT\Interfaces\iPessoa;
 
-class Cliente
+class Pessoa implements iPessoa
 {
     private $id;
     private $nome;
-    private $cpf;
     private $email;
     private $telFixo;
     private $telCelular;
@@ -27,22 +27,83 @@ class Cliente
     private $bairro;
     private $cep;
     private $foto;
+    private $tipoPessoa;
 
-
-    public function __construct( $id, $nome, $cpf, $email, $telFixo, $telCelular, $uf, $estado, $endereco, $bairro ,$cep,$foto )
+    public function __construct( $id, $nome, $email, $telFixo, $telCelular, $uf, $estado, $endereco, $bairro ,$cep, $tipoPessoa )
     {
-        $this->setId($id);
-        $this->setNome($nome);
-        $this->setCpf($cpf);
-        $this->setEmail($email);
-        $this->setTelFixo($telFixo);
-        $this->setTelCelular($telCelular);
-        $this->setUf($uf);
-        $this->setEstado($estado);
-        $this->setEndereco($endereco);
-        $this->setBairro($bairro);
-        $this->setCep($cep);
-        $this->setFoto($foto);
+        $this->setId( $id )
+            ->setNome( $nome )
+            ->setEmail( $email )
+            ->setTelFixo( $telFixo )
+            ->setTelCelular( $telCelular )
+            ->setUf( $uf )
+            ->setEstado( $estado )
+            ->setEndereco( $endereco )
+            ->setBairro( $bairro )
+            ->setCep( $cep )
+            ->setTipoPessoa( $tipoPessoa );
+    }
+
+    public function enderecoCobranca( $tipo )
+    {
+        $arrTipo = array();
+        $html = '';
+        switch( $tipo[0] ) {
+            case '1' :
+                $html .= '<ul>';
+                $html .= '<li>Casa: '.$tipo[1].'</li>';
+                $html .= '</ul>';
+                return $html;
+                break;
+            case '2' :
+                $html .= '<ul>';
+                $html .= '<li>Casa: '.$tipo[1].'</li>';
+                $html .= '<li>Comercial: '.$tipo[2].'</li>';
+                $html .= '</ul>';
+                return $html;
+                break;
+            case '3' :
+                $html .= '<ul>';
+                $html .= '<li>Casa: '.$tipo[1].'</li>';
+                $html .= '<li>Comercial: '.$tipo[2].'</li>';
+                $html .= '<li>Escritório: '.$tipo[3].'</li>';
+                $html .= '</ul>';
+                return $html;
+                break;
+        }
+    }
+
+
+    /**
+     * @param $num
+     * @return string
+     */
+    public function classifica( $num )
+    {
+        $this->classificacao = $num;
+        $caracter = '*';
+        for( $i=1; $i < $this->classificacao; $i++ )
+        {
+            $caracter .= '*';
+        }
+        return $caracter;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
 
@@ -52,6 +113,7 @@ class Cliente
     public function setBairro($bairro)
     {
         $this->bairro = $bairro;
+        return $this;
     }
 
     /**
@@ -68,6 +130,7 @@ class Cliente
     public function setCep($cep)
     {
         $this->cep = $cep;
+        return $this;
     }
 
     /**
@@ -79,27 +142,12 @@ class Cliente
     }
 
     /**
-     * @param mixed $cpf
-     */
-    public function setCpf($cpf)
-    {
-        $this->cpf = $cpf;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCpf()
-    {
-        return $this->cpf;
-    }
-
-    /**
      * @param mixed $email
      */
     public function setEmail($email)
     {
         $this->email = $email;
+        return $this;
     }
 
     /**
@@ -116,6 +164,7 @@ class Cliente
     public function setEndereco($endereco)
     {
         $this->endereco = $endereco;
+        return $this;
     }
 
     /**
@@ -132,6 +181,7 @@ class Cliente
     public function setEstado($estado)
     {
         $this->estado = $estado;
+        return $this;
     }
 
     /**
@@ -148,6 +198,7 @@ class Cliente
     public function setFoto($foto)
     {
         $this->foto = $foto;
+        return $this;
     }
 
     /**
@@ -159,27 +210,12 @@ class Cliente
     }
 
     /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @param mixed $nome
      */
     public function setNome($nome)
     {
         $this->nome = $nome;
+        return $this;
     }
 
     /**
@@ -196,6 +232,7 @@ class Cliente
     public function setTelCelular($telCelular)
     {
         $this->telCelular = $telCelular;
+        return $this;
     }
 
     /**
@@ -212,6 +249,7 @@ class Cliente
     public function setTelFixo($telFixo)
     {
         $this->telFixo = $telFixo;
+        return $this;
     }
 
     /**
@@ -228,6 +266,7 @@ class Cliente
     public function setUf($uf)
     {
         $this->uf = $uf;
+        return $this;
     }
 
     /**
@@ -238,7 +277,20 @@ class Cliente
         return $this->uf;
     }
 
+    /**
+     * @param mixed $tipoPessoa
+     */
+    public function setTipoPessoa($tipoPessoa)
+    {
+        $this->tipoPessoa = $tipoPessoa;
+        return $this;
+    }
 
-
-
+    /**
+     * @return mixed
+     */
+    public function getTipoPessoa()
+    {
+        return $this->tipoPessoa;
+    }
 } 

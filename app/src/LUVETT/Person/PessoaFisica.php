@@ -10,7 +10,7 @@
  * Copyright: 2014
  */
 
-namespace classes;
+namespace app\src\LUVETT\Person;
 
 
 class PessoaFisica extends Pessoa

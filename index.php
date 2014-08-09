@@ -10,8 +10,7 @@
  * Copyright: 2014
  */
 
-require_once( 'config.php' );
-
+require_once('config.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -32,13 +31,13 @@ require_once( 'config.php' );
 
 <body>
 
-<?php require_once( 'inc/nav_bar.php' ); ?>
+<?php require_once( 'app/inc/nav_bar.php' ); ?>
 
 <div class="container theme-showcase" id="containerPrincipal">
-    <?php require_once('inc/cliente.php'); ?>
+    <?php require_once('app/inc/cliente.php'); ?>
 </div> <!-- /container -->
 
-<?php require_once( 'inc/footer.php' ); ?>
+<?php require_once( 'app/inc/footer.php' ); ?>
 
 <script src="publico/js/jquery.min.js"></script>
 <script src="publico/js/maskedInput.jquery.js"></script>
