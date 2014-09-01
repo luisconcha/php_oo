@@ -42,12 +42,24 @@ class PessoaFisica extends Pessoa
         return $this->tipoCobranca;
     }
 
+    public function setTipoCobrabca( $tipoCobranca )
+    {
+        $this->tipoCobranca = $tipoCobranca;
+        return $this;
+    }
+
     /**
      * @return string
      */
     public function getEstrelas()
     {
         return $this->estrelas;
+    }
+
+    public function setEstrelas( $estrelas )
+    {
+        $this->estrelas = $estrelas;
+        return $this;
     }
 
     /**
@@ -100,6 +112,5 @@ class PessoaFisica extends Pessoa
     {
         return $this->foto;
     }
-
 
 } 

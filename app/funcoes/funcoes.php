@@ -56,3 +56,18 @@ function mascara($valor, $mascara)
     endfor;
     return $valorFormatado;
 }
+
+function estados( $idEstado )
+{
+    switch( $idEstado )
+    {
+        case 1:
+            return 'Brasilia';break;
+        case 2:
+            return 'São Paulo';break;
+        default:
+            return 'Não informado';break;
+    }
+
+
+}

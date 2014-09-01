@@ -46,7 +46,6 @@ class Pessoa implements iPessoa
 
     public function enderecoCobranca( $tipo )
     {
-        $arrTipo = array();
         $html = '';
         switch( $tipo[0] ) {
             case '1' :
