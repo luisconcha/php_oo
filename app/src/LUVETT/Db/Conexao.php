@@ -19,7 +19,7 @@ class Conexao
     private static $dbType  = "mysql";
     private static $host    = "localhost";
     private static $user    = "root";
-    private static $senha   = "root";
+    private static $senha   = "";
     private static $db      = "";
 
     public static function getInstance()

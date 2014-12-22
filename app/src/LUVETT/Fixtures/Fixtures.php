@@ -78,4 +78,34 @@ class Fixtures
         }
 
     }
+
+    public function verificaCadastroExistente( $nome )
+    {
+        try{
+            $nomeTabela = $this->pegaNomeTabela();
+
+            $sql  = "SELECT * FROM $nomeTabela WHERE $nomeTabela.nome = '$nome'";
+            $stmt = $this->pdo->prepare( $sql );
+            $stmt->execute();
+            if( $stmt->rowCount() > 0 ){
+              return true;
+            }else{
+                return false;
+            }//end if
+
+        }catch (\PDOException $e) {
+            echo 'Erro ao executar a consulta. Descrição do erro: ' . $e->getMessage();
+        }
+    }
+
+    protected function pegaNomeTabela()
+    {
+
+        $sql  = "SELECT TABLE_NAME FROM information_schema.tables WHERE table_schema = '$this->banco'";
+        $stmt = $this->pdo->prepare( $sql );
+        $stmt->execute();
+        while( $row = $stmt->fetch( \PDO::FETCH_NUM ) ) {
+          return $row[0];
+        }
+    }
 } 

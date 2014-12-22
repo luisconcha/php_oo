@@ -19,29 +19,61 @@ use \app\src\LUVETT\Person\PessoaFisica;
 use app\src\LUVETT\Person\PessoaJuridica;
 
 
-$pessoaFisica   = new PessoaFisica( '','Luis Alberto Concha Curay 22','luvett@gmail.com','612222222','6133333333','1','1','Casa 01','bairro 01','4444444','1','1112221199','3123123','../publico/imagens/luis.jpg','10','3' );
+$pessoaFisica   = new PessoaFisica( '','Luis Alberto Concha Curay','luvett@gmail.com','612222222','6133333333','1','1','Casa 01','bairro 01','4444444','1','1112221199','3123123','../publico/imagens/luis.jpg','10','3' );
 $pessoaJuridica = new PessoaJuridica( '','Empresa 02','empresa01@globo.com','6166667777','6199998888','2','2','Av Industrial numero 2','Castranheras','44322212','2','12323456765432','Empresa Globo Sat','3' );
 
 $conexao = new Conexao();
 $banco   = new Fixtures( $conexao );
 
+$executadaFixture = false;
+$jaExisteCadastro = false;
+
 if( $banco->varificaExistenciaBD() ) {
     if( $banco->criarTabela() ) {
         try{
             $objPessoa    = new Persistencia( $conexao, 'tbl_pessoa2' );
-            $objPessoa->persist( $pessoaFisica );
-            $objPessoa->persist( $pessoaJuridica );
+            if( $banco->verificaCadastroExistente( $pessoaFisica->getNome()) != true ){
+
+                if( $objPessoa->persist( $pessoaFisica ) && $objPessoa->persist( $pessoaJuridica ) ) {
+                    $executadaFixture = true;
+                }
+
+            }else{
+                $jaExisteCadastro = true;
+            }
+
         }
         catch( \PDOException $e ) {
             echo "Erro no Arquivo: {$e->getFile()} . <br />Linha: {$e->getLine()} . <br />Mensagem: {$e->getMessage()}";
         }
     }
 }
-
 $listaUsuarios = $objPessoa->getAll();
 
 ?>
 <div class="row">
+
+    <?php if( $executadaFixture == true ): ?>
+        <div role="alert" class="alert alert-success alert-dismissible fade in">
+            <button data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <strong>O sistema informa</strong> A fixture foi executada com sucesso.
+            <p>Em: /var/www/html/studo_php/php_oo/app/inc/cliente.php </p>
+            <p>Linha: 37</p>
+            <p>$objPessoa->persist( $pessoaFisica ) && $objPessoa->persist( $pessoaJuridica )</p>
+        </div>
+    <?php endif ?>
+
+    <?php if( $jaExisteCadastro == true ): ?>
+        <div role="alert" class="alert alert-danger alert-dismissible fade in">
+            <button data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <strong>O sistema informa</strong> A fixture já foi executada no carregamento da página, existe uma vefificação de
+            existencia de usuário em:
+            <p>/var/www/html/studo_php/php_oo/app/inc/cliente.php </p>
+            <p>Linha: 35</p>
+            <p>$banco->verificaCadastroExistente( $pessoaFisica->getNome()) != true</p>
+        </div>
+    <?php endif ?>
+
     <div id="listaClientes">
         <div class="col-md-11">
             <div class="panel panel-primary">
