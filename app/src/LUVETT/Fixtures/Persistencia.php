@@ -12,8 +12,6 @@
 
 namespace app\src\LUVETT\Fixtures;
 
-
-
 use app\src\LUVETT\Db\Conexao;
 use app\src\LUVETT\Person\PessoaFisica;
 use app\src\LUVETT\Person\PessoaJuridica;
@@ -41,7 +39,7 @@ class Persistencia
             return $dadosEncontrados;
         }
         catch( \PDOException $e ) {
-            echo "Erro no Arquivo: {$e->getFile()} . <br />Linha: {$e->getLine()} . <br />Mensagem: {$e->getMessage()}";
+            //echo "Erro no Arquivo: {$e->getFile()} . <br />Linha: {$e->getLine()} . <br />Mensagem: {$e->getMessage()}";
         }
     }
 

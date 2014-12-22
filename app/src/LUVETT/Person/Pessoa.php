@@ -49,16 +49,16 @@ class Pessoa implements iPessoa
         $html = '';
         switch( $tipo[0] ) {
             case '1' :
-                $html .= '<ul>';
-                $html .= '<li>Casa: '.$tipo[1].'</li>';
-                $html .= '</ul>';
+                $html .= "<ul>";
+                $html .= "<li>Casa: ".$tipo[1]."</li>";
+                $html .= "</ul>";
                 return $html;
                 break;
             case '2' :
-                $html .= '<ul>';
-                $html .= '<li>Casa: '.$tipo[1].'</li>';
-                $html .= '<li>Comercial: '.$tipo[2].'</li>';
-                $html .= '</ul>';
+                $html .= "<ul>";
+                $html .= "<li>Casa: ".$tipo[1]."</li>";
+                $html .= "<li>Comercial: ".$tipo[2]."</li>";
+                $html .= "</ul>";
                 return $html;
                 break;
             case '3' :

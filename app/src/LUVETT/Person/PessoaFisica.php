@@ -30,7 +30,7 @@ class PessoaFisica extends Pessoa
              ->setRg( $rg )
              ->setFoto( $foto );
         $this->estrelas     = parent::classifica( $numEstrelas );
-        $this->tipoCobranca = parent::enderecoCobranca( $tipoCobranca );
+        $this->tipoCobranca = @parent::enderecoCobranca( $tipoCobranca );
     }
 
 
