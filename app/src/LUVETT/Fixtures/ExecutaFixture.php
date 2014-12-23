@@ -47,17 +47,15 @@ try{
     $pessoaJuricica = new \app\src\LUVETT\Person\PessoaJuridica( '','Empresa 01','empresa01@terra.com','612234234','617612121','1','1','Av. Jose de la Mar','bairro 02','4444444','2','1112221199','Empresa Novo Teste','10' );
 
     $conexao = new \app\src\LUVETT\Db\Conexao();
-    $banco   = new \app\src\LUVETT\Fixtures\Fixtures( $conexao );
 
     $objPessoa  = new \app\src\LUVETT\Fixtures\Persistencia( $conexao ,'tbl_pessoa2' );
 
-    if( $objPessoa->persist( $pessoaFisica ) )
-        echo 'Dados da pessoa Física inserida com sucesso!'.chr(13).chr(10);
+    $objPessoa->persist( $pessoaFisica );
+    $objPessoa->persist( $pessoaJuricica );
+    echo 'Dados da pessoa Física inserida com sucesso!'.chr(13).chr(10);
+    echo 'Dados da pessoa Jurídica inserida com sucesso!'.chr(13).chr(10);
 
-    if( $objPessoa->persist( $pessoaJuricica ) )
-        echo 'Dados da pessoa Jurídica inserida com sucesso!'.chr(13).chr(10);
-
-
+    $objPessoa->flush();
 
 }
 catch (Exception $e) {

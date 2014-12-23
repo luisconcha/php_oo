@@ -21,6 +21,7 @@ class Persistencia
 {
     private $pdo = null;
     private $tabela;
+    private $banco = 'php_parte4';
 
     public function __construct( Conexao $con, $tabela )
     {
@@ -31,7 +32,7 @@ class Persistencia
     public function getAll()
     {
         try{
-            $sql  = "SELECT * FROM " . $this->tabela;
+            $sql  = "SELECT * FROM ".$this->banco.'.'. $this->tabela;
             $stmt = $this->pdo->prepare( $sql );
             $stmt->execute();
             $dadosEncontrados = $stmt->fetchAll();
@@ -46,7 +47,7 @@ class Persistencia
     public function getPorId( $id )
     {
         try{
-            $sql  = "SELECT * FROM " . $this->tabela . ' WHERE id = '.$id;
+            $sql  = "SELECT * FROM ".$this->banco.'.' . $this->tabela . ' WHERE id = '.$id;
             $stmt = $this->pdo->prepare( $sql );
             $stmt->execute();
             $dadosEncontrado = $stmt->fetch();
@@ -87,21 +88,9 @@ class Persistencia
         }
         elseif( $pessoa instanceof PessoaJuridica ){
             $arrDados['cnpj'] = $pessoa->getCnpj();
-
         }
 
         try{
-            $this->flush( $arrDados );
-            return true;
-        } catch( \PDOException $e ) {
-            echo "Erro no Arquivo: {$e->getFile()} . <br />Linha: {$e->getLine()} . <br />Mensagem: {$e->getMessage()}";
-        }
-    }
-
-    private function flush( $arrDados = array() )
-    {
-        try{
-
             $sql  = "INSERT INTO $this->tabela ( nome,email,telFixo,telCelular,uf,estado,endereco,bairro,cep,foto,tipoPessoa,cpf,rg,estrelas,tipoCobranca )
                      VALUES( :nome, :email, :telFixo, :telCelular, :uf, :estado, :endereco, :bairro, :cep, :foto, :tipoPessoa, :cpf, :rg, :estrelas, :tipoCobranca)";
             $stmt = $this->pdo->prepare( $sql );
@@ -122,9 +111,19 @@ class Persistencia
             $stmt->bindParam( ':tipoCobranca',$arrDados['tipoCobranca'] );
             $stmt->execute();
             $this->pdo->close();
-
         }catch( \PDOException $e ) {
             echo "Erro no Arquivo: {$e->getFile()} . <br />Linha: {$e->getLine()} . <br />Mensagem: {$e->getMessage()}";
+        }
+    }
+
+    public function flush()
+    {
+        try{
+            $this->pdo->getInstance()->beginTransaction();
+            $this->pdo->getInstance()->commit();
+            $this->pdo->close();
+        }catch (\PDOException $e){
+            echo "Erro: {$e->getFile()} . <br />Linha: {$e->getLine()} . <br />Mensagem: {$e->getMessage()}";
         }
     }
 } 
